@@ -2,10 +2,12 @@ from pyexpat.errors import messages
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import *
 from django.views import View
+from .models import Livro
 
 class IndexView(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'index.html')
+        livros = Livro.objects.all()
+        return render(request, 'index.html', {'livros':livros})
     
 class LivrosView(View):
     def get(self, request, *args, **kwargs):
@@ -13,10 +15,10 @@ class LivrosView(View):
         return render(request, 'livros.html', {'livros':livros})
 
 # def post(self, request, *args, **kwargs):
-class EmprestimoView(View):
-    def get(self, request, *args, **kwargs):
-        reservas = Emprestimo.objects.all()
-        return render(request, 'reserva.html', {'reservas': reservas})
+#class EmprestimoView(View):
+    #def get(self, request, *args, **kwargs):
+        #reservas = Emprestimo.objects.all()
+       # return render(request, 'reserva.html', {'reservas': reservas})
 
 
 class CidadesView(View):
@@ -48,5 +50,5 @@ class DeleteLivroView(View):
     def get(self, request, id, *args, **kwargs):
         livro = Livro.objects.get(id=id)
         livro.delete()
-            messages.success(request, 'Livro excluído com sucesso!') 
+        messages.success(request, 'Livro excluído com sucesso!')
         return redirect('livros')
