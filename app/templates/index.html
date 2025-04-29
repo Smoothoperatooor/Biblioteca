@@ -15,8 +15,7 @@ min.css">
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
         <a class="navbar-brand" href="/">Biblioteca</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle
-navigation">
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -69,6 +68,7 @@ navigation">
                 <th scope="col">Data Publicação</th>
                 <th scope="col">Status</th>
                 <th scope="col">Excluir</th>
+                <th scope="col">Editar</th>
             </tr>
         </thead>
         <tbody>
@@ -82,6 +82,8 @@ navigation">
                 <td>{{ livros.data_plub }}</td>
                 <td>{{ livros.status }}</td>
                 <td><a href="delete/{{ livros.id }}" class="btn btn-danger">Excluir</a></td>
+                <td><a href="editar/{{ livros.id }}" class="btn btn-warning">Editar</a></td>
+                    
             </tr>
             {% endfor %}
         </tbody>
